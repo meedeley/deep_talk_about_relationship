@@ -17,8 +17,8 @@ class OneToOneController extends Controller
     2. Load
     3. Pluck
     4. Find
-    5. 
-
+    5. Cookie
+    6. Session
     */
 
     public function getSellers()
