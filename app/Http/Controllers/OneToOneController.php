@@ -5,20 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\City;
 use App\Models\Seller;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
 
 class OneToOneController extends Controller
 {
 
     /*
     -- Mempelajari Collection Di Relasi One To One
-    1. With
-    2. Load
-    3. Pluck
-    4. Find
-    5. Cookie
-    6. Session
+    1. With - Digunakan untuk eager loading relasi sebelum query dijalankan, cocok jika relasi sudah pasti diperlukan sejak awal untuk mencegah N+1 query dan meningkatkan efisiensi.
+    2. Load - Digunakan untuk eager loading relasi setelah query dijalankan, berguna jika kebutuhan meload relasi baru diputuskan setelah data utama diambil.
+    3. Pluck - Mengambil semua nilai dari satu kolom dalam tabel.
+    4. Find - Mencari Id Table
+    5. Cookie - Data Simpan Disisi Client
+    6. Session - Data Disimpan Disisi Server
+    7. toJson - Mengubah data menjadi format JSON string.
+    8. toArray - Mengubah data menjadi format array PHP.
+    9. json_encode - Mengubah data PHP (array atau objek) menjadi string JSON.
+    10. json_decode -  Mengubah string JSON menjadi data PHP (array atau objek).
     */
 
     public function getSellers()
@@ -111,5 +115,17 @@ class OneToOneController extends Controller
         ])->withCookie($cookie);
     }
 
-    public function saveSellerToSession() {}
+    public function saveCityToSession() {
+        $city = City::query()->get();
+
+        Session::put('city', $city);
+
+        $getSession = Session::get('city');
+
+        return $this->responseServer(200, [
+            "statusCode" => 200,
+            "data" => $getSession
+        ]);
+
+    }
 }

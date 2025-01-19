@@ -12,6 +12,7 @@ Route::get('/city/{cities:id}', [OneToOneController::class, 'getCityById']);
 Route::get('/seller-json', [OneToOneController::class, 'sellerJsonToCollect']);
 Route::get('/cookie', [OneToOneController::class, 'getCookie']);
 Route::get('/save-cookie', [OneToOneController::class, 'saveSellerToCookie']);
+Route::get('/session', [OneToOneController::class, 'saveCityToSession']);
 
 // One To Many
 
