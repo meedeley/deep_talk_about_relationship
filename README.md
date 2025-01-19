@@ -11,10 +11,10 @@
 9. json_encode - Mengubah data PHP (array atau objek) menjadi string JSON.
 10. json_decode -  Mengubah string JSON menjadi data PHP (array atau objek). 
 
-    -- Mempelajari Relasi One To One
+## Mempelajari Relasi One To One
 
-    <!-- Migrations Seller -->
     ```
+    - Migrations Seller
     Schema::create('sellers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -22,8 +22,8 @@
         });
     ```
 
-    <!-- Migrations Cities -->
     ```
+    - Migration Cities
       Schema::create('cities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('seller_id')->unique()->constrained();
@@ -32,8 +32,8 @@
         });
     ```
 
-    <!-- Relasi Model Seller -->
     ```
+    - Relasi Model Seller
     Class Seller extends Model {
         ...
         public function city(): HasOne
@@ -43,8 +43,8 @@
     }
     ```
 
-    <!-- Relasi Model City -->
     ```
+    - Relasi Model City
     Class City extends Models {
         ...
         public function seller(): BelongsTo
@@ -53,6 +53,20 @@
         }
     } 
     ```
-    -- Mempelajari Relasi One To Many
-    -- Mempelajari Relasi Many To Many
-        --
+## Mempelajari Relasi One To Many
+
+## Mempelajari Relasi Many To Many
+
+### Intermediate Table
+
+### Pivot Table
+
+### Attach
+
+### Detach
+
+### Sync
+
+### UpdateExistingPivot
+
+
