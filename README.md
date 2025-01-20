@@ -14,7 +14,7 @@
 ## Mempelajari Relasi One To One
 
     ```
-    - Migrations Seller
+    - Migrations Sellers
     Schema::create('sellers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
