@@ -16,10 +16,11 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
        $this->call([
+            HobbySeeder::class,
             SellerSeeder::class,
             CitySeeder::class,
             FlightSeeder::class,
-            TicketSeeder::class
+            TicketSeeder::class,
        ]);
     }
 }
