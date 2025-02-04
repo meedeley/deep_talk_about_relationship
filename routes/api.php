@@ -24,9 +24,19 @@ Route::get('/ticket-relationship', [OneToManyController::class, 'getTicketRelati
 Route::post('/flight-relationship', [OneToManyController::class, 'setFlightRelationship']);
 
 // Many To Many
-Route::post('/student-hobbies', [ManyToManyController::class, 'setArrayHobbies']);
-Route::get('/student-hobbies', [ManyToManyController::class, 'getArrayHobbies']);
-Route::post('/student', [ManyToManyController::class, 'storeStudentHobbies']);
+Route::get('/students', [ManyToManyController::class, 'getStudent']);
+Route::get('/hobbies', [ManyToManyController::class, 'getHobbies']);
+Route::get('/get/student-hobbies', [ManyToManyController::class, 'getStudentHobbies']);
+
+Route::get('/create-student', [ManyToManyController::class, 'createNewStudentHobbies']);
+
+Route::post('/student-hobbies', [ManyToManyController::class, 'setSessionHobbies']);
+Route::get('/student-hobbies', [ManyToManyController::class, 'getSessionHobbies']);
+Route::post('/store/student-hobby', [ManyToManyController::class, 'storeStudentHobbies']);
+Route::put('/update/student-hobby/{id}', [ManyToManyController::class, 'updateStudentHobbies']);
+Route::delete('/delete/student-hobby/{id}', [ManyToManyController::class, 'detachStudentHobbies']);
+
+
 
 Route::get('/user', function (Request $request) {
     return $request->user();
